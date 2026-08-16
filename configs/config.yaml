@@ -1,0 +1,38 @@
+data:
+  train_noisy_dir: data/train/NoisyLR
+  train_gt_dir: data/train/GT
+  test_noisy_dir: data/test/NoisyLR
+  val_split: 0.1          # fraction of training pairs held out for validation
+  scale: 2                # GT resolution = NoisyLR resolution * scale
+  patch_size: 64           # random crop size on the NoisyLR side during training; null to disable
+
+model:
+  in_channels: 1
+  out_channels: 1
+  channels: 64
+  growth: 32
+  num_blocks: 8
+  scale: 2
+
+loss:
+  w_charbonnier: 1.0
+  w_ssim: 0.2
+  w_edge: 0.1
+  w_perceptual: 0.05
+  use_perceptual: true
+
+train:
+  batch_size: 16
+  num_epochs: 100
+  lr: 2.0e-4
+  weight_decay: 0.0
+  seed: 42
+  amp: true                 # mixed precision, auto-disabled on CPU
+  resynth_prob: 0.3         # probability of resynthesizing input via degradation.py per sample
+  checkpoint_dir: weights
+  log_every: 50
+  val_every: 1
+  num_workers: 4
+
+inference:
+  batch_size: 8
