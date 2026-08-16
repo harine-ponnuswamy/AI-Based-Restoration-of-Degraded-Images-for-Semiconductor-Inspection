@@ -1,0 +1,15 @@
+# A small NoisyLR sample ships in data/ for self-tests. If you replace it with the
+# full KLA dataset locally, add a rule here to exclude the bulk files from git
+# (e.g. `data/train/NoisyLR/*.npy`) — GitHub is not meant to host the full dataset.
+
+# large trained weights — use Git LFS (see README section 7) instead of committing raw .pt files
+weights/*.pt
+!weights/.gitkeep
+
+outputs/restored_test/*.npy
+!outputs/restored_test/.gitkeep
+
+__pycache__/
+*.pyc
+.DS_Store
+.ipynb_checkpoints/
