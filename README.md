@@ -97,12 +97,21 @@ path relative to the script location, not the working directory.
 
 ## 5. Repository structure
 
+## 5. Repository structure
+
 ```
 ├── README.md                   # this file
 ├── PROJECT_PLAN.md              # full design rationale and decisions
 ├── requirements.txt
+├── Team_Nebula/                  # official submission entry point (run.py format)
 ├── configs/
 │   └── config.yaml               # all model/training/data hyperparameters
+├── data/
+│   ├── train/
+│   │   ├── NoisyLR/                # degraded, low-res training images
+│   │   └── GT/                      # clean, full-res ground truth
+│   └── test/
+│       └── NoisyLR/                 # held-out test set, no GT
 ├── src/
 │   ├── model.py                   # RestorationNet: encoder -> RRDB backbone -> pixel-shuffle upsampler
 │   ├── losses.py                    # Charbonnier + SSIM + edge + perceptual combined loss
@@ -118,11 +127,6 @@ path relative to the script location, not the working directory.
 │   └── restored_test/            # model output on the test set
 └── notebooks/                  # exploratory work only, never load-bearing
 ```
-
-**Every module under `src/` has a `if __name__ == "__main__":` self-test block** — run
-`python -m src.model`, `python -m src.losses`, `python -m src.dataset`, `python -m src.metrics`,
-or `python -m src.utils` directly to sanity-check that piece in isolation.
-
 
 ## 6. Model architecture summary
 
