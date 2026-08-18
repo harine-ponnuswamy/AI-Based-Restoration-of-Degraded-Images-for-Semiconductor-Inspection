@@ -6,6 +6,13 @@ resolution lost to downsampling from semiconductor inspection images, in one for
 See `PROJECT_PLAN.md` for the full design rationale (architecture choices, loss design,
 augmentation strategy, and why this approach was chosen over alternatives).
 
+## Official submission entry point
+
+For the exact `python run.py <input-dir> <output-dir>` format required by the
+hackathon's final technical check, see the [`Team_Nebula/`](./Team_Nebula) folder —
+it's a minimal, self-contained, offline-runnable package (weights included) separate
+from the full training/research codebase documented below.
+
 ## 1. Setup
 
 ```bash
